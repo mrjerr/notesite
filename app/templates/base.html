@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}{{ title }}{% endblock %}
+    </title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+  <main role="main" class="container">
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+      <div >
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link"  {% if active_note_add %}id="menu-active"{% endif %} href="/">Добавить заметку</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" {% if active_note_list %}id="menu-active"{% endif %} href="/note-list">Список заметок</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+        <div class="alert alert-{{ category }}" role="alert">
+            {{ message }}
+        </div>
+        {% endfor %}
+
+    {% endif %}
+{% endwith %}
+
+    <div class="container">
+
+    {% block content %}
+    {% endblock %}
+
+    </div>
+  </main>
+</body>
+
+</html>

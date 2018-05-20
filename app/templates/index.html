@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Добавить новую запись</h1>
+<form action="" method="post" name="text">
+    {{form.hidden_tag()}}
+    <div class="form-group">
+        {{form.text}}
+    </div>
+    <button type="submit" class="btn btn-dark">Отправить</button>
+</form>
+{% endblock %}

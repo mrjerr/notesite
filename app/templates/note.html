@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h2>Заметка №{{note.id}}</h2>
+
+    <p>
+        <b>Уникальных слов в заметке: {{note.unique_word_count}}</b>
+    </p>
+
+    <pre>
+        {{note.text}}
+    </pre>
+
+{% endblock %}

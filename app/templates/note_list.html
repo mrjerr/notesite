@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <table class="table">
+        <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Уникальных слов</th>
+              <th scope="col">Содержание</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for note in notes %}
+            <tr>
+                <td>{{loop.index}}</td>
+                <td>{{ note.unique_word_count }}</td>
+                <td>
+                    <a href="{{ url_for('note_page', id=note.id) }}">
+                        {{ note.short_description }}
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <hr>
+{% endblock %}
